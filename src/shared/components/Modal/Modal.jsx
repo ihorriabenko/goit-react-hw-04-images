@@ -13,7 +13,7 @@ const Modal = ({children, onClose}) => {
     return() => {
       document.removeEventListener('keydown', handleClose);
     }
-  })
+  }, [])
 
   const handleClose = e => {
 

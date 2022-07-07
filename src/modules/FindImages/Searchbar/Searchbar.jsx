@@ -1,46 +1,86 @@
-import { Component } from 'react';
+// import { Component } from 'react';
+import { useState } from 'react';
+
 import PropTypes from 'prop-types';
 
-class Searchbar extends Component {
-  state = {
-    value: '',
-  };
+const Searchbar = ({onSubmit}) => {
 
-  handleSubmit = e => {
-    e.preventDefault();
-    if (this.state.value.trim() === '') {
-      return alert('Enter correct name');
-    }
-    this.props.onSubmit(this.state.value);
-    this.setState({ value: '' });
-  };
+const [value, setValue] = useState('');
 
-  handleChange = e => {
-    this.setState({ value: e.currentTarget.value });
-  };
+const handleSubmit = e => {
+  e.preventDefault();
 
-  render() {
-    const { handleSubmit, handleChange } = this;
+  onSubmit(value);
+  setValue('');
+};
 
-    return (
-      <div className="Searchbar">
-        <form className="SearchForm" onSubmit={handleSubmit}>
-          <button className="SearchForm-button">Click</button>
-          <input
-            className="SearchForm-input"
-            type="text"
-            name="value"
-            autoComplete="off"
-            autoFocus
-            required
-            placeholder="Search images and photos"
-            onChange={handleChange}
-          ></input>
-        </form>
-      </div>
-    );
-  }
+const handleChange = e => {
+  setValue(e.currentTarget.value);
+};
+
+return (
+        <div className="Searchbar">
+          <form className="SearchForm" onSubmit={handleSubmit}>
+            <button className="SearchForm-button">Click</button>
+            <input
+            value={value}
+              className="SearchForm-input"
+              type="text"
+              name="value"
+              autoComplete="off"
+              autoFocus
+              required
+              placeholder="Search images and photos"
+              onChange={handleChange}
+            ></input>
+          </form>
+        </div>
+      );
+
 }
+
+// class Searchbar extends Component {
+//   state = {
+//     value: '',
+//   };
+
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   if (this.state.value.trim() === '') {
+  //     return alert('Enter correct name');
+  //   }
+  //   this.props.onSubmit(this.state.value);
+  //   this.setState({ value: '' });
+  // };
+
+  // handleChange = e => {
+  //   this.setState({ value: e.currentTarget.value });
+  // };
+
+//   render() {
+//     const { handleSubmit, handleChange } = this;
+//     const {value} = this.state;
+
+//     return (
+//       <div className="Searchbar">
+//         <form className="SearchForm" onSubmit={handleSubmit}>
+//           <button className="SearchForm-button">Click</button>
+//           <input
+//           value={value}
+//             className="SearchForm-input"
+//             type="text"
+//             name="value"
+//             autoComplete="off"
+//             autoFocus
+//             required
+//             placeholder="Search images and photos"
+//             onChange={handleChange}
+//           ></input>
+//         </form>
+//       </div>
+//     );
+//   }
+// }
 
 Searchbar.propTypes = {
   onSubmit: PropTypes.func.isRequired,

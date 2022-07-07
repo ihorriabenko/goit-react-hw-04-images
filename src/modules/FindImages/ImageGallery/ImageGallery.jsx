@@ -1,8 +1,7 @@
 import PropTypes, { arrayOf } from 'prop-types';
 import ImageGalleryItem from "../ImageGalleryItem";
 
-const ImageGallery = (props) => {
-  const { items, onClick } = props;
+const ImageGallery = ({items, onClick}) => {
   const elements = items.map(({ id, webformatURL, tags, largeImageURL }) => {
     return (
       <ImageGalleryItem

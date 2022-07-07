@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 const ImageGalleryItem = ({
-  id,
   webformatURL,
   largeImageURL,
   tags,

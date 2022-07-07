@@ -1,6 +1,5 @@
 import Searchbar from './Searchbar';
 import ImageGallery from './ImageGallery';
-import ImageGalleryItem from './ImageGalleryItem';
 import { getPosts } from '../../shared/components/services/Api';
 import Modal from '../../shared/components/Modal';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
